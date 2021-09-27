@@ -46,3 +46,5 @@
         #         'company_elem': company_elem, 
         #         'location_elem': location_elem,
         #     }
+
+        #scrapy crawl indeed -a job=php -a loc=remote -o php_remote.json

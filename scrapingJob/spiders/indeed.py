@@ -1,6 +1,6 @@
 import scrapy
 from datetime import datetime
-from scrapy.linkextractors import LinkExtractor
+
 
 
 class IndeedSpider(scrapy.Spider):
@@ -8,7 +8,8 @@ class IndeedSpider(scrapy.Spider):
     allowed_domains = ['www.indeed.com','indeed.com', 'us.conv.indeed.com']
 
     def start_requests(self):
-        yield scrapy.Request(f'https://www.indeed.com/jobs?q=react&l=Remote')
+        yield scrapy.Request(f'https://www.indeed.com/jobs?q={self.job}&l={self.loc}')
+        # yield scrapy.Request('http://www.example.com/categories/%s' % self.category)
 
     def parse(self, response):
         #extraemos el contenedor pricipal
