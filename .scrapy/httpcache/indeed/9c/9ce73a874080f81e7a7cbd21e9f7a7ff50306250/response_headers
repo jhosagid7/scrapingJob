@@ -1,9 +1,0 @@
-Server: nginx
-Date: Sun, 26 Sep 2021 09:35:05 GMT
-Set-Cookie: CTK=1fggnagbau27o800; Domain=.indeed.com; Expires=Fri, 25-Sep-2026 09:35:05 GMT; Path=/
-Set-Cookie: ctkgen=1; Expires=Sun, 26-Sep-2021 09:38:05 GMT; Path=/
-Set-Cookie: JSESSIONID=C4F1534F8EC225C6D4FC270D702490B8; Path=/; HttpOnly
-Set-Cookie: indeed_rcc=""; Expires=Fri, 25-Sep-2026 09:35:05 GMT; Path=/
-Set-Cookie: INDEED_CSRF_TOKEN=47TvPEX37cEve5CRSm9PfBYU2WZKbUG0; Path=/
-X-Frame-Options: SAMEORIGIN
-Location: https://www.indeed.com/q-php-l-Remote-jobs.html
