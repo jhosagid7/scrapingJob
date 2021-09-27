@@ -28,3 +28,21 @@
     #         'job_title': job_title,               
     #         'Apply_to': apply_to,
     #     }
+
+
+
+    # Absolute URL
+        #     absolute_url = response.urljoin(link)
+
+
+        #     yield {
+        #         'link': absolute_url,
+        #         'today': today,
+        #         'sumary': sumary,
+        #         'salary': salary,
+        #         'apply_to': apply_to,
+        #         'post_date': post_date,
+        #         'title_elem': title_elem,               
+        #         'company_elem': company_elem, 
+        #         'location_elem': location_elem,
+        #     }
