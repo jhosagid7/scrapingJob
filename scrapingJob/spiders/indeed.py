@@ -49,7 +49,7 @@ class IndeedSpider(scrapy.Spider):
 
         # Data extracted from the link apply to company, to obtain the link apply to
         Apply_to = rows.xpath('.//@href').get()
-        job_title = response.xpath('.//h1/text()').get()
+        job_title = response.xpath('.//h1/text()').get().replace(u"\u00a0", " ")
 
         yield {
         'job_title': job_title,
