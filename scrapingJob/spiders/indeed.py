@@ -13,7 +13,7 @@ class IndeedSpider(scrapy.Spider):
          
 
     def parse(self, response):
-        # We extract the main container
+        # We extract the main container.
         link_cont_elemts  = response.xpath('//td/div[4]/div[1]/a')
 
         for lc_elemts in link_cont_elemts:
