@@ -20,7 +20,7 @@ class IndeedSpider(scrapy.Spider):
             link            = lc_elemts.xpath('.//@href').get()
             extract_date    = datetime.today().strftime('%Y-%m-%d')
             location        = lc_elemts.xpath('.//div[contains(@class, "companyLocation")]/span/text()').get()
-            company_name    = lc_elemts.xpath('//span[contains(@class, "companyName")]/text()').get()
+            company_name    = lc_elemts.xpath('.//span[contains(@class, "companyName")]/text()').get()
             salary_tag      = lc_elemts.xpath('.//table[1]/tbody/tr/td/div[3]/div/span/text()').get()
             post_date       = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/span[1]/text()').get()
             job_description = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/div/ul/li/text()').get()
@@ -30,6 +30,12 @@ class IndeedSpider(scrapy.Spider):
                 salary      = salary_tag
             else:
                 salary      = ''  
+
+            
+            if company_name:
+                company_name      = company_name
+            else:
+                company_name    = lc_elemts.xpath('.//span[contains(@class, "companyName")]/a/text()').get()
 
             if link is not None:
                 
