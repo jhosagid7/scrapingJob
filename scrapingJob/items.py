@@ -10,13 +10,14 @@ class ScrapingjobItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     #info of 
-    # title_elem = scrapy.Field()
-    # company_elem = scrapy.Field()
-    # location_elem = scrapy.Field()
-    # post_date = scrapy.Field()
-    # today = scrapy.Field()
-    # link_cont_elem = scrapy.Field()
-    # sumary = scrapy.Field()
-    # salary = scrapy.Field()
+    # Job_title = scrapy.Field()
+    # Location = scrapy.Field()
+    # Company_name = scrapy.Field()
+    # Post_date = scrapy.Field()
+    # Extract_date = scrapy.Field()
+    # Job_description = scrapy.Field()
+    # Salary = scrapy.Field()
+    # job_title = scrapy.Field()
+    # Apply_to = scrapy.Field()
     
     pass
