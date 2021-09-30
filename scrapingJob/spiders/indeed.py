@@ -18,12 +18,12 @@ class IndeedSpider(scrapy.Spider):
 
         for lc_elemts in link_cont_elemts:
             link            = lc_elemts.xpath('.//@href').get()
-            extract_date           = datetime.today().strftime('%Y-%m-%d')
-            location   = lc_elemts.xpath('.//table[1]/tbody/tr/td/div[2]/pre/div/text()').get()
+            extract_date    = datetime.today().strftime('%Y-%m-%d')
+            location        = lc_elemts.xpath('.//table[1]/tbody/tr/td/div[2]/pre/div/text()').get()
             company_name    = lc_elemts.xpath('.//span[contains(@class, "companyName")]/text()').get()
             salary_tag      = lc_elemts.xpath('.//table[1]/tbody/tr/td/div[3]/div/span/text()').get()
             post_date       = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/span[1]/text()').get()
-            job_description          = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/div/ul/li/text()').get()
+            job_description = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/div/ul/li/text()').get()
 
             if salary_tag:
                 salary      = salary_tag
@@ -43,12 +43,12 @@ class IndeedSpider(scrapy.Spider):
 
     def parse_applyto(self, response):
         #Data extracted from the main page
-        extract_date = response.request.meta['extract_date']
-        location = response.request.meta['location']
-        company_name = response.request.meta['company_name']
-        post_date = response.request.meta['post_date']
+        extract_date    = response.request.meta['extract_date']
+        location        = response.request.meta['location']
+        company_name    = response.request.meta['company_name']
+        post_date       = response.request.meta['post_date']
         job_description = response.request.meta['job_description']
-        salary = response.request.meta['salary']
+        salary          = response.request.meta['salary']
 
         rows = response.xpath('//div[@id="applyButtonLinkContainer"]/div/div[2]/a')
 
