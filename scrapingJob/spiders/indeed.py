@@ -19,11 +19,12 @@ class IndeedSpider(scrapy.Spider):
         for lc_elemts in link_cont_elemts:
             link            = lc_elemts.xpath('.//@href').get()
             extract_date    = datetime.today().strftime('%Y-%m-%d')
-            location        = lc_elemts.xpath('.//table[1]/tbody/tr/td/div[2]/pre/div/text()').get()
-            company_name    = lc_elemts.xpath('.//span[contains(@class, "companyName")]/text()').get()
+            location        = lc_elemts.xpath('.//div[contains(@class, "companyLocation")]/span/text()').get()
+            company_name    = lc_elemts.xpath('//span[contains(@class, "companyName")]/text()').get()
             salary_tag      = lc_elemts.xpath('.//table[1]/tbody/tr/td/div[3]/div/span/text()').get()
             post_date       = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/span[1]/text()').get()
             job_description = lc_elemts.xpath('.//table[2]/tbody/tr[2]/td/div[1]/div/ul/li/text()').get()
+            searched_job        = self.job
 
             if salary_tag:
                 salary      = salary_tag
@@ -33,7 +34,7 @@ class IndeedSpider(scrapy.Spider):
             if link is not None:
                 
                 # Relative link //*[contains(@aria-label, "Next")]
-                yield response.follow(url=link, callback=self.parse_applyto, meta={'extract_date':extract_date,'location':location,'company_name':company_name,'post_date':post_date,'job_description':job_description,'salary':salary})
+                yield response.follow(url=link, callback=self.parse_applyto, meta={'extract_date':extract_date,'location':location,'company_name':company_name,'post_date':post_date,'job_description':job_description,'salary':salary,'searched_job':searched_job})
 
         
         next_page_url = response.xpath('//*[contains(@aria-label, "Next")]/@href').get()
@@ -49,6 +50,7 @@ class IndeedSpider(scrapy.Spider):
         post_date       = response.request.meta['post_date']
         job_description = response.request.meta['job_description']
         salary          = response.request.meta['salary']
+        searched_job          = response.request.meta['searched_job']
 
         rows = response.xpath('//div[@id="applyButtonLinkContainer"]/div/div[2]/a')
 
@@ -57,6 +59,7 @@ class IndeedSpider(scrapy.Spider):
         job_title = response.xpath('.//h1/text()').get().replace(u"\u00a0", " ")
 
         yield {
+        'Searched_job': searched_job,
         'Job_title': job_title,
         'Location': location,
         'Company_name': company_name,

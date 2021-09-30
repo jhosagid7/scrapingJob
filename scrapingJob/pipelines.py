@@ -16,6 +16,7 @@ class ScrapingjobPipeline:
         try:
             self.c.execute("""
                 CREATE TABLE indeeds (
+                    Searched_job TEXT,
                     Job_title TEXT,
                     Location TEXT,
                     Company_name TEXT,
@@ -36,8 +37,9 @@ class ScrapingjobPipeline:
 
     def process_item(self, item, spider):
         self.c.execute("""
-            INSERT INTO indeeds (Job_title,Location,Company_name,Post_date,Extract_date,Job_description,Salary,job_title,Apply_to) VALUES(?,?,?,?,?,?,?,?,?)
+            INSERT INTO indeeds (Searched_job,Job_title,Location,Company_name,Post_date,Extract_date,Job_description,Salary,job_title,Apply_to) VALUES(?,?,?,?,?,?,?,?,?,?)
         """, (
+            item.get('Searched_job'),
             item.get('Job_title'),
             item.get('Location'),
             item.get('Company_name'),
