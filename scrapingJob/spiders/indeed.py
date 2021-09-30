@@ -13,7 +13,7 @@ class IndeedSpider(scrapy.Spider):
          
 
     def parse(self, response):
-        #extraemos el contenedor pricipal
+        # We extract the main container
         link_cont_elemts  = response.xpath('//td/div[4]/div[1]/a')
 
         for lc_elemts in link_cont_elemts:
@@ -33,7 +33,7 @@ class IndeedSpider(scrapy.Spider):
 
             if link is not None:
                 
-                # Relative link //*[contains(@aria-label, "Next")]
+                # Relative link
                 yield response.follow(url=link, callback=self.parse_applyto, meta={'extract_date':extract_date,'location':location,'company_name':company_name,'post_date':post_date,'job_description':job_description,'salary':salary,'searched_job':searched_job})
 
         
